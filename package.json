@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\"",
-    "lite": "lite-server",
-    "tsc:w": "tsc -w",
-    "typings": "typings",
-    "postinstall": "typings install"
-  },
+  "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\"",
+  "lite": "lite-server",
+  "tsc": "tsc",
+  "tsc:w": "tsc -w",
+  "typings": "typings",
+  "postinstall": "typings install"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
