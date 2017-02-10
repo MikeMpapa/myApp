@@ -102,7 +102,7 @@
 
 ------  START WITH TypeScript  -----
 14. Create a new dir name app and the relative typescript file       --> mkdir app
-           --> touch app/magic.ts
+           --> touch app/magic.ts  (example file --> not mandatory step)
            (if we run npm start, magic.js will be automatically created by typescript and everything we type in typescript format in magic.ts will be automatically converted into javascript in magic.js)
 
 ----    INSTALL ANGULAR devDependencies and Packages  ---
@@ -208,7 +208,7 @@ Overview: @angular/http, @angular/forms, @angular/router, @angular/upgrade
                         </body>
                         </html>
 
-----------  SUM UP!!!!!!!!! ---------
+-------------------------------------------------------------------------------------------- SUM UP!!!!!!!!! ------------------------------------------------------
 
 Having:
 a. index.html
@@ -219,4 +219,52 @@ e. system.config.js
 
 Should be enough to initiate environment for every new application in the future by runing:  npm instal
 
----------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------ START WITH THE APP!!!!!!!! --------------------------------------------------------
+
+
+1. Under /app dir create app.components.ts file             --> touch /app/app.components.ts
+2. Create a first custom component as:
+
+          import {Component} from '@angular/core';
+
+    @Component({
+        selector: 'my-app',
+        template:`
+            <div class="jumbotron">
+            <h1>Welcome to our App!</h1>
+            </div>
+        `
+        style:[`
+        .jumbotron {box-shadow: 0 2px 0 rgba(0,0,0, 0.2); }
+        `]
+    })
+
+    export class AppComponent{}
+
+3. Under /app dir create app.module.ts file. Modules are required to use our components. A module is a collection of components that represent a certain section of the app. A complex app consists of many modules, which include different combinations of components.             --> touch /app/app.module.ts
+
+4. Create first module as:
+
+      import {NgModule} from '@angular/core';
+      import {BrowserModule} from '@angular/platform-browser';
+      import {AppComponent} from './app.component';
+
+      @NgModule({
+          imports: [ BrowserModule ],
+          declaration: [AppComponent ],
+          bootstrap: [ AppComponent ]
+      })
+
+      export class AppMdule{}
+
+5. Bootstrap Module, ie. use the module we just created
+  Under /app dir create main.ts file             --> touch /app/main.ts
+
+6. Create Bootstrap in main  :
+
+      import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+      import {AppModule}  from './app.module';
+
+      platformBrowserDynamic().bootstrapModule(AppModule);
